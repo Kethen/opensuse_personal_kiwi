@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="7.2" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
+	<description type="system">
+		<author>Katharine Chui</author>
+		<contact>kwchuiaa@connect.ust.hk</contact>
+		<specification>openSUSE MicroOS</specification>
+	</description>
+	<profiles>
+		<profile name="with-KDE" description="With KDE"/>
+		<profile name="with-GNOME" description="With GNOME"/>
+	</profiles>
+	<preferences arch="x86_64">
+		<version>0.0.1</version>
+		<packagemanager>zypper</packagemanager>
+		<type 
+			image="oem"
+			filesystem="btrfs"
+			firmware="uefi"
+			fsmountoptions="compress-force=zstd:3"
+			installiso="false"
+			bootpartition="false"
+			devicepersistency="by-uuid"
+			btrfs_root_is_snapshot="true"
+			btrfs_root_is_readonly_snapshot="true"
+			kernelcmdline="security=apparmor"
+			luks="1234"
+			luks_version="luks1"
+		>
+			<bootloader
+				name="grub2"
+				timeout="3"
+			/>
+			<systemdisk>
+				<volume name="home"/>
+				<volume name="root"/>
+				<volume name="opt"/>
+				<volume name="srv"/>
+				<volume name="boot/grub2/i386-pc"/>
+				<volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+				<volume name="boot/writable"/>
+				<volume name="usr/local"/>
+				<volume name="var" copy_on_write="false"/>
+			</systemdisk>
+			<size unit="G" additive="false">5</size>
+		</type>
+	</preferences>
+	<users>
+		<user
+			name="root"
+			groups="root"
+			home="/root"
+			password="disable_me"
+			pwdformat="plain"
+			realname="root"
+			shell="/usr/bin/bash"
+		/>
+		<user
+			name="katharine"
+			groups="katharine,katharine,wheel"
+			home="/home/katharine"
+			password="1234"
+			pwdformat="plain"
+			realname="Katharine Chui"
+			shell="/usr/bin/bash"
+		/>
+	</users>
+	<repository imageinclude="true" alias="oss">
+		<source path='http://download.opensuse.org/tumbleweed/repo/oss/'/>
+	</repository>
+	<repository imageinclude="true" alias="non-oss">
+		<source path='http://download.opensuse.org/tumbleweed/repo/non-oss/'/>
+	</repository>
+	<repository imageinclude="true" alias="openh264">
+		<source path='http://codecs.opensuse.org/openh264/openSUSE_Tumbleweed'/>
+	</repository>
+	<repository imageinclude="true" alias="update">
+		<source path='http://download.opensuse.org/update/tumbleweed/'/>
+	</repository>
+	<packages type="image" profiles="with-KDE">
+		<namedCollection name="microos_kde_desktop"/>
+		<package name="onboard"/>
+	</packages>
+	<packages type="image" profiles="with-GNOME">
+		<namedCollection name="microos_gnome_desktop"/>
+	</packages>
+	<packages type="image">
+		<package name="alsa"/>
+		<package name="alsa-oss"/>
+		<package name="alsa-oss-32bit"/>
+		<package name="alsa-plugins"/>
+		<package name="alsa-plugins-speexrate"/>
+		<package name="alsa-plugins-upmix"/>
+		<package name="alsa-ucm-conf"/>
+		<package name="alsa-utils"/>
+	</packages>
+	<packages type="image">
+		<package name="libvulkan_radeon"/>
+		<package name="libvulkan_radeon-32bit"/>
+		<package name="libvulkan_intel"/>
+		<package name="libvulkan_intel-32bit"/>
+		<package name="vulkan-tools"/>
+		<package name="vulkan-tools-32bit"/>
+		<package name="Mesa"/>
+		<package name="Mesa-32bit"/>
+		<package name="Mesa-demo-x"/>
+		<package name="Mesa-demo-x-32bit"/>
+		<package name="xhost"/>
+		<package name="mangohud"/>
+		<package name="mozilla-openh264"/>
+		<package name="gstreamer-1.20-plugin-openh264"/>
+		<package name="xinput"/>
+		<package name="xrandr"/>
+	</packages>
+	<packages type="image">
+		<package name="nano"/>
+		<package name="iftop"/>
+		<package name="iotop"/>
+		<package name="glances"/>
+		<package name="htop"/>
+		<package name="unzip"/>
+		<package name="zip"/>
+		<package name="zstd"/>
+		<package name="pbzip2"/>
+		<package name="gzip"/>
+		<package name="7zip"/>
+		<package name="tcpdump"/>
+		<package name="dhex"/>
+		<package name="binwalk"/>
+	</packages>
+	<packages type="image">
+		<namedCollection name="microos_base"/>
+		<namedCollection name="microos_base_zypper"/>
+		<namedCollection name="microos_defaults"/>
+		<namedCollection name="microos_hardware"/>
+		<namedCollection name="container_runtime"/>
+		<namedCollection name="bootloader"/>
+		<namedCollection name="microos_apparmor"/>
+		<package name="kernel-default"/>
+		<package name="kernel-firmware-all"/>
+		<package name="device-mapper"/>
+		<package name="cryptsetup"/>
+		<package name="parted"/>
+		<package name="firewalld"/>
+		<package name="dracut-kiwi-oem-dump"/>
+		<package name="dracut-kiwi-oem-repart"/>
+	</packages>
+    <packages type="bootstrap">
+		<package name="coreutils"/>
+		<package name="gawk"/>
+		<package name="gzip"/>
+		<package name="hostname"/>
+		<package name="openssl"/>
+		<package name="filesystem"/>
+		<package name="glibc-locale-base"/>
+		<package name="ca-certificates-mozilla"/>
+		<package name="MicroOS-release-dvd"/>
+    </packages>
+</image>
