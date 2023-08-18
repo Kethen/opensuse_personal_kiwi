@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# kiwi functions
+test -f /.kconfig && . /.kconfig
+test -f /.profile && . /.profile
+
 set -xe
 
 # install input methods and some fonts for fallback
@@ -31,6 +35,8 @@ cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
 sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
 sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
 sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
+
+baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 
 # toggle some services
 systemctl enable NetworkManager
