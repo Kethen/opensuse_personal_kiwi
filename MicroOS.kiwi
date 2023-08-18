@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="7.2" name="openSUSE-MicroOS" displayname="openSUSE MicroOS">
+<image schemaversion="7.2" name="openSUSE-MicroOS-unofficial" displayname="openSUSE MicroOS (Unofficial)">
 	<description type="system">
 		<author>Katharine Chui</author>
 		<contact>kwchuiaa@connect.ust.hk</contact>
-		<specification>openSUSE MicroOS</specification>
+		<specification>openSUSE MicroOS (Unofficial)</specification>
 	</description>
 	<profiles>
 		<profile name="with-KDE" description="With KDE"/>
@@ -17,7 +17,7 @@
 			filesystem="btrfs"
 			firmware="uefi"
 			fsmountoptions="compress-force=zstd:3"
-			installiso="false"
+			installiso="true"
 			bootpartition="false"
 			devicepersistency="by-uuid"
 			btrfs_root_is_snapshot="true"
@@ -79,9 +79,11 @@
 	<packages type="image" profiles="with-KDE">
 		<namedCollection name="microos_kde_desktop"/>
 		<package name="onboard"/>
+		<package name="pam_kwallet"/>
 	</packages>
 	<packages type="image" profiles="with-GNOME">
 		<namedCollection name="microos_gnome_desktop"/>
+		<package name="gnome-keyring-pam"/>
 	</packages>
 	<packages type="image">
 		<package name="alsa"/>
@@ -126,6 +128,7 @@
 		<package name="tcpdump"/>
 		<package name="dhex"/>
 		<package name="binwalk"/>
+		<package name="sshfs"/>
 	</packages>
 	<packages type="image">
 		<namedCollection name="microos_base"/>
