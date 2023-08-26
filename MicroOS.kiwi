@@ -19,7 +19,7 @@
 			filesystem="btrfs"
 			firmware="uefi"
 			fsmountoptions="compress-force=zstd:3"
-			installiso="true"
+			installiso="false"
 			bootpartition="false"
 			devicepersistency="by-uuid"
 			btrfs_root_is_snapshot="true"
@@ -135,6 +135,20 @@
 		<package name="binwalk"/>
 		<package name="sshfs"/>
 		<package name="tmux"/>
+		<package name="qemu-kvm"/>
+		<package name="qemu-ui-opengl"/>
+		<package name="qemu-ui-spice-core"/>
+		<package name="qemu-ui-gtk"/>
+		<package name="qemu-hw-usb-host"/>
+		<package name="qemu-audio-pa"/>
+		<package name="qemu-audio-alsa"/>
+		<package name="qemu-hw-display-qxl"/>
+		<package name="qemu-hw-display-virtio-gpu"/>
+		<package name="qemu-hw-display-virtio-gpu-pci"/>
+		<package name="qemu-hw-display-virtio-vga"/>
+		<package name="qemu-ovmf-x86_64"/>
+		<package name="qemu-seabios"/>
+		<package name="qemu-img"/>
 	</packages>
 	<packages type="image">
 		<namedCollection name="microos_base"/>
