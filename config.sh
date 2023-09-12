@@ -63,6 +63,7 @@ baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 systemctl enable NetworkManager
 systemctl disable sshd
 systemctl disable firewalld
+systemctl enable earlyoom
 
 # force ibus
 echo 'export GTK_IM_MODULE=ibus
