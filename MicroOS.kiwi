@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="7.2" name="openSUSE-MicroOS-unofficial" displayname="openSUSE MicroOS (Unofficial)">
+<image schemaversion="7.4" name="openSUSE-MicroOS-unofficial" displayname="openSUSE MicroOS (Unofficial)">
 	<description type="system">
 		<author>Katharine Chui</author>
 		<contact>kwchuiaa@connect.ust.hk</contact>
@@ -27,6 +27,7 @@
 			kernelcmdline="security=apparmor"
 			luks="1234"
 			luks_version="luks1"
+			eficsm="false"
 		>
 			<bootloader
 				name="grub2"
@@ -149,6 +150,8 @@
 		<package name="qemu-ovmf-x86_64"/>
 		<package name="qemu-seabios"/>
 		<package name="qemu-img"/>
+		<package name="evtest"/>
+		<package name="linuxconsoletools"/>
 	</packages>
 	<packages type="image">
 		<namedCollection name="microos_base"/>

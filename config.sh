@@ -14,7 +14,7 @@ fi
 
 # install input methods and some fonts for fallback
 set +e
-zypper -n --gpg-auto-import-keys install 'google-noto-*' 'noto-*-fonts' 'ibus-*'
+zypper -n --gpg-auto-import-keys install 'google-noto-*' 'ibus-*'
 status_code=$?
 if [ "$status_code" != "107" ] && [ "$status_code" != "0" ]
 then
@@ -47,8 +47,8 @@ zypper -n clean -a
 passwd -l root
 # steamos update dummys sudoer file is 99
 echo '%wheel  ALL=(ALL)       ALL' > /etc/sudoers.d/98_deck_pw_sudo
-sed -i'' '/^ALL   ALL=(ALL) ALL/d' /etc/sudoers
-sed -i'' '/^Defaults targetpw/d' /etc/sudoers
+sed -i'' '/^ALL   ALL=(ALL) ALL/d' /usr/etc/sudoers
+sed -i'' '/^Defaults targetpw/d' /usr/etc/sudoers
 
 # configure snapper as https://build.opensuse.org/package/show/openSUSE:Factory/openSUSE-MicroOS would
 cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
@@ -62,13 +62,12 @@ baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 # toggle some services
 systemctl enable NetworkManager
 systemctl disable sshd
-systemctl disable firewalld
 systemctl enable earlyoom
 
 # force ibus
-echo 'export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus' >> /etc/skel/.profile
+#echo 'export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=ibus
+#export QT_IM_MODULE=ibus' >> /etc/skel/.profile
 
 # default to nano
 echo 'export EDITOR=nano' >> /etc/skel/.profile
