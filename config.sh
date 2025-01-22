@@ -26,6 +26,12 @@ set -e
 # manpages
 zypper -n --gpg-auto-import-keys install man man-pages
 
+# lock firefox
+zypper -n addlock MozillaFirefox
+
+# lock kernel-default
+zypper -n addlock kernel-default
+
 # install nvidia drivers
 if $is_nvidia
 then
@@ -43,12 +49,7 @@ fi
 
 zypper -n clean -a
 
-# disable root
 passwd -l root
-# steamos update dummys sudoer file is 99
-echo '%wheel  ALL=(ALL)       ALL' > /etc/sudoers.d/98_deck_pw_sudo
-sed -i'' '/^ALL   ALL=(ALL) ALL/d' /usr/etc/sudoers
-sed -i'' '/^Defaults targetpw/d' /usr/etc/sudoers
 
 # configure snapper as https://build.opensuse.org/package/show/openSUSE:Factory/openSUSE-MicroOS would
 cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
@@ -63,6 +64,7 @@ baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
 systemctl enable NetworkManager
 systemctl disable sshd
 systemctl enable earlyoom
+systemctl enable zramswap
 
 # force ibus
 #echo 'export GTK_IM_MODULE=ibus
