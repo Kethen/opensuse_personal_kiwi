@@ -66,6 +66,9 @@ systemctl disable sshd
 systemctl enable earlyoom
 systemctl enable zramswap
 
+# disable auto update
+systemctl mask transactional-update.service
+
 # force ibus
 #echo 'export GTK_IM_MODULE=ibus
 #export XMODIFIERS=@im=ibus
