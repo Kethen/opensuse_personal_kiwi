@@ -26,8 +26,8 @@ set -e
 # manpages
 zypper -n --gpg-auto-import-keys install man man-pages
 
-# lock firefox
-zypper -n addlock MozillaFirefox
+# lock a few recommended packages that gets pulled in during updates
+zypper -n addlock MozillaFirefox chromium libreoffice
 
 # lock kernel-default
 zypper -n addlock kernel-default
