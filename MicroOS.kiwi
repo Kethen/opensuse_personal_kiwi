@@ -44,7 +44,7 @@
 				<volume name="usr/local"/>
 				<volume name="var" copy_on_write="false"/>
 			</systemdisk>
-			<size unit="G" additive="false">5</size>
+			<size unit="G" additive="false">6</size>
 		</type>
 	</preferences>
 	<users>
@@ -73,9 +73,11 @@
 	<repository imageinclude="true" alias="non-oss">
 		<source path='http://download.opensuse.org/tumbleweed/repo/non-oss/'/>
 	</repository>
+	<!--
 	<repository imageinclude="true" alias="openh264">
 		<source path='http://codecs.opensuse.org/openh264/openSUSE_Tumbleweed'/>
 	</repository>
+	-->
 	<repository imageinclude="true" alias="update">
 		<source path='http://download.opensuse.org/update/tumbleweed/'/>
 	</repository>
@@ -83,12 +85,18 @@
 		<source path='https://download.nvidia.com/opensuse/tumbleweed/'/>
 	</repository>
 	<packages type="image" profiles="with-KDE,with-KDE-nvidia">
-		<namedCollection name="microos_kde_desktop"/>
+		<package name="patterns-kalpa-base"/>
 		<package name="onboard"/>
 		<package name="pam_kwallet"/>
+		<package name="sddm-qt6-branding-openSUSE"/>
+		<package name="plasma6-branding-openSUSE"/>
+		<package name="oxygen6"/>
+		<package name="kf6-oxygen-icons-scalable"/>
+		<package name="gtk2-theme-oxygen"/>
+		<package name="gtk2-engine-oxygen"/>
 	</packages>
 	<packages type="image" profiles="with-GNOME,with-GNOME-nvidia">
-		<namedCollection name="microos_gnome_desktop"/>
+		<package name="patterns-aeon-base"/>
 		<package name="gnome-keyring-pam"/>
 		<package name="gnome-extensions"/>
 		<package name="evolution"/>
@@ -117,8 +125,11 @@
 		<package name="xhost"/>
 		<package name="mangohud"/>
 		<package name="mangohud-32bit"/>
+		<!--
+		<package name="libopenh264"/>
 		<package name="mozilla-openh264"/>
-		<package name="gstreamer-1.20-plugin-openh264"/>
+		<package name="gstreamer-plugin-openh264"/>
+		-->
 		<package name="xinput"/>
 		<package name="xrandr"/>
 	</packages>
@@ -126,6 +137,9 @@
 		<package name="nano"/>
 		<package name="iftop"/>
 		<package name="iotop"/>
+		<package name="iperf"/>
+		<package name="iperf2"/>
+		<package name="mtr"/>
 		<package name="glances"/>
 		<package name="htop"/>
 		<package name="unzip"/>
@@ -140,7 +154,7 @@
 		<package name="binwalk"/>
 		<package name="sshfs"/>
 		<package name="tmux"/>
-		<package name="qemu-kvm"/>
+		<package name="qemu"/>
 		<package name="qemu-ui-opengl"/>
 		<package name="qemu-ui-spice-core"/>
 		<package name="qemu-ui-gtk"/>
@@ -163,15 +177,19 @@
 		<package name="wine-staging-32bit"/>
 	</packages>
 	<packages type="image">
+		<!--
 		<namedCollection name="microos_base"/>
 		<namedCollection name="microos_base_zypper"/>
 		<namedCollection name="microos_defaults"/>
+		-->
 		<namedCollection name="microos_hardware"/>
 		<namedCollection name="container_runtime"/>
 		<namedCollection name="bootloader"/>
+		<package name="btrfsprogs"/>
+		<package name="libz1"/>
 		<package name="apparmor-profiles"/>
 		<package name="apparmor-parser"/>
-		<package name="kernel-longterm"/>
+		<package name="kernel-default"/>
 		<package name="kernel-firmware-all"/>
 		<package name="device-mapper"/>
 		<package name="cryptsetup"/>

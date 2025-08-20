@@ -26,11 +26,21 @@ set -e
 # manpages
 zypper -n --gpg-auto-import-keys install man man-pages
 
-# lock a few recommended packages that gets pulled in during updates
-zypper -n addlock MozillaFirefox chromium libreoffice
+if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ]
+then
+	# uninstall vlc and falkon in the kde build
+	zypper -n remove vlc falkon
+fi
 
-# lock kernel-default
-zypper -n addlock kernel-default
+# lock a few recommended packages that gets pulled in during updates
+zypper -n addlock MozillaFirefox chromium libreoffice vlc falkon
+
+if false
+then
+	# uninstall and lock kernel-default
+	zypper -n remove kernel-default
+	zypper -n addlock kernel-default
+fi
 
 # install nvidia drivers
 if $is_nvidia
