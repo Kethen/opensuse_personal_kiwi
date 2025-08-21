@@ -154,6 +154,7 @@
 		<package name="binwalk"/>
 		<package name="sshfs"/>
 		<package name="tmux"/>
+		<package name="ncdu"/>
 		<package name="qemu"/>
 		<package name="qemu-ui-opengl"/>
 		<package name="qemu-ui-spice-core"/>
