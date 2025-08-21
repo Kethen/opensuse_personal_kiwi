@@ -94,6 +94,7 @@
 		<package name="kf6-oxygen-icons-scalable"/>
 		<package name="gtk2-theme-oxygen"/>
 		<package name="gtk2-engine-oxygen"/>
+		<package name="korganizer"/>
 	</packages>
 	<packages type="image" profiles="with-GNOME,with-GNOME-nvidia">
 		<package name="patterns-aeon-base"/>
