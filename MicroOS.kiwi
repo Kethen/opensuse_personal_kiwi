@@ -156,6 +156,7 @@
 		<package name="sshfs"/>
 		<package name="tmux"/>
 		<package name="ncdu"/>
+		<package name="git"/>
 		<package name="qemu"/>
 		<package name="qemu-ui-opengl"/>
 		<package name="qemu-ui-spice-core"/>
