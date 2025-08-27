@@ -178,6 +178,12 @@
 		<package name="mingw32-cross-gcc-c++"/>
 		<package name="wine-staging"/>
 		<package name="wine-staging-32bit"/>
+		<package name="fuse"/>
+		<package name="ncat"/>
+		<package name="android-tools"/>
+		<package name="wireshark"/>
+		<package name="git"/>
+		<package name="bind-utils"/>
 	</packages>
 	<packages type="image">
 		<!--
