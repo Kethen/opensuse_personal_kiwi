@@ -184,6 +184,8 @@
 		<package name="wireshark"/>
 		<package name="git"/>
 		<package name="bind-utils"/>
+		<package name="usbmuxd"/>
+		<package name="imobiledevice-tools"/>
 	</packages>
 	<packages type="image">
 		<!--
