@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# ref https://build.opensuse.org/projects/devel:microos:images/packages/openSUSE-MicroOS
+
 # kiwi functions
 test -f /.kconfig && . /.kconfig
 test -f /.profile && . /.profile
@@ -57,7 +59,9 @@ then
 	done
 fi
 
-zypper -n clean -a
+# install codecs
+zypper -n addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
+zypper --gpg-auto-import-keys -n install --allow-vendor-change --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec vlc-codecs Mesa-libva
 
 passwd -l root
 
@@ -92,3 +96,5 @@ chown katharine:katharine /home/katharine/.profile
 
 # cups access from group wheel
 sed -i'' 's/^SystemGroup root/SystemGroup wheel/' /etc/cups/cups-files.conf
+
+zypper -n clean -a
