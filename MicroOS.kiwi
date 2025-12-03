@@ -86,7 +86,6 @@
 	</repository>
 	<packages type="image" profiles="with-KDE,with-KDE-nvidia">
 		<package name="patterns-kalpa-base"/>
-		<package name="onboard"/>
 		<package name="pam_kwallet"/>
 		<package name="sddm-qt6-branding-openSUSE"/>
 		<package name="plasma6-branding-openSUSE"/>
@@ -95,6 +94,9 @@
 		<package name="gtk2-theme-oxygen"/>
 		<package name="gtk2-engine-oxygen"/>
 		<package name="korganizer"/>
+		<package name="maliit-keyboard"/>
+		<package name="maliit-keyboard-layouts"/>
+		<package name="maliit-keyboard-lang"/>
 	</packages>
 	<packages type="image" profiles="with-GNOME,with-GNOME-nvidia">
 		<package name="patterns-aeon-base"/>

@@ -31,11 +31,11 @@ zypper -n --gpg-auto-import-keys install man man-pages
 if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ]
 then
 	# uninstall vlc and falkon in the kde build
-	zypper -n remove vlc falkon
+	zypper -n remove vlc
 fi
 
 # lock a few recommended packages that gets pulled in during updates
-zypper -n addlock MozillaFirefox chromium libreoffice vlc falkon
+zypper -n addlock MozillaFirefox chromium libreoffice vlc
 
 if false
 then
