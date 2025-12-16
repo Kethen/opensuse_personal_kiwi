@@ -188,6 +188,7 @@
 		<package name="bind-utils"/>
 		<package name="usbmuxd"/>
 		<package name="imobiledevice-tools"/>
+		<package name="libva-utils"/>
 	</packages>
 	<packages type="image">
 		<!--
@@ -213,6 +214,8 @@
 		<package name="sensors"/>
 		<package name="earlyoom"/>
 		<package name="systemd-zram-service"/>
+		<package name="smartmontools"/>
+		<package name="nvme-cli"/>
 	</packages>
     <packages type="bootstrap">
 		<package name="coreutils"/>
