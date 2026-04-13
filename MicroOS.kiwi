@@ -107,6 +107,7 @@
 	</packages>
 	<packages type="image" profiles="minimum">
 		<package name="patterns-microos-base"/>
+		<package name="transactional-update"/>
 	</packages>
 	<packages type="image">
 		<package name="alsa"/>
@@ -141,6 +142,7 @@
 		<package name="xrandr"/>
 	</packages>
 	<packages type="image">
+		<package name="bash-completion"/>
 		<package name="nano"/>
 		<package name="iftop"/>
 		<package name="iotop"/>
