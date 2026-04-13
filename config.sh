@@ -14,18 +14,24 @@ then
 	is_nvidia=true
 fi
 
-# install input methods and some fonts for fallback
-set +e
-zypper -n --gpg-auto-import-keys install 'google-noto-*' 'ibus-*'
-status_code=$?
-if [ "$status_code" != "107" ] && [ "$status_code" != "0" ]
+if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ] || [ "$kiwi_profiles" == "with-GNOME-nvidia" ] || [ "$kiwi_profiles" == "with-GNOME" ]
 then
-	echo zypper -n --gpg-auto-import-keys install 'google-noto-*' 'noto-*-fonts' 'ibus-*' exited with $status_code
-	exit 1
+	# install input methods and some fonts for fallback
+	set +e
+	zypper -n --gpg-auto-import-keys install 'google-noto-*' 'ibus-*'
+	status_code=$?
+	if [ "$status_code" != "107" ] && [ "$status_code" != "0" ]
+	then
+		echo zypper -n --gpg-auto-import-keys install 'google-noto-*' 'noto-*-fonts' 'ibus-*' exited with $status_code
+		exit 1
+	fi
+	set -e
 fi
-set -e
 
 # manpages
+set +e
+zypper -n remove busybox-man busybox-less
+set -e
 zypper -n --gpg-auto-import-keys install man man-pages
 
 if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ]
@@ -59,9 +65,12 @@ then
 	done
 fi
 
-# install codecs
-zypper -n addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
-zypper --gpg-auto-import-keys -n install --allow-vendor-change --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec vlc-codecs Mesa-libva
+if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ] || [ "$kiwi_profiles" == "with-GNOME-nvidia" ] || [ "$kiwi_profiles" == "with-GNOME" ]
+then
+	# install codecs
+	zypper -n addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
+	zypper --gpg-auto-import-keys -n install --allow-vendor-change --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec vlc-codecs Mesa-libva
+fi
 
 passwd -l root
 
@@ -94,7 +103,10 @@ echo 'export EDITOR=nano' >> /etc/skel/.profile
 cp /etc/skel/.profile /home/katharine/.profile
 chown katharine:katharine /home/katharine/.profile
 
-# cups access from group wheel
-sed -i'' 's/^SystemGroup root/SystemGroup wheel/' /etc/cups/cups-files.conf
+if [ "$kiwi_profiles" == "with-KDE-nvidia" ] || [ "$kiwi_profiles" == "with-KDE" ] || [ "$kiwi_profiles" == "with-GNOME-nvidia" ] || [ "$kiwi_profiles" == "with-GNOME" ]
+then
+	# cups access from group wheel
+	sed -i'' 's/^SystemGroup root/SystemGroup wheel/' /etc/cups/cups-files.conf
+fi
 
 zypper -n clean -a

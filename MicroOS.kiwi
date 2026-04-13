@@ -10,6 +10,7 @@
 		<profile name="with-KDE-nvidia" description="With KDE + nvidia drivers"/>
 		<profile name="with-GNOME" description="With GNOME"/>
 		<profile name="with-GNOME-nvidia" description="With GNOME + nvidia drivers"/>
+		<profile name="minimum" description="without GUI"/>
 	</profiles>
 	<preferences arch="x86_64">
 		<version>0.0.1</version>
@@ -104,6 +105,9 @@
 		<package name="gnome-extensions"/>
 		<package name="evolution"/>
 	</packages>
+	<packages type="image" profiles="minimum">
+		<package name="patterns-microos-base"/>
+	</packages>
 	<packages type="image">
 		<package name="alsa"/>
 		<package name="alsa-oss"/>
@@ -114,7 +118,7 @@
 		<package name="alsa-ucm-conf"/>
 		<package name="alsa-utils"/>
 	</packages>
-	<packages type="image">
+	<packages type="image" profiles="with-GNOME,with-GNOME-nvidia,with-KDE,with-KDE-nvidia">
 		<package name="libvulkan_radeon"/>
 		<package name="libvulkan_radeon-32bit"/>
 		<package name="libvulkan_intel"/>
