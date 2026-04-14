@@ -179,6 +179,7 @@
 		<package name="qemu-ovmf-x86_64"/>
 		<package name="qemu-seabios"/>
 		<package name="qemu-img"/>
+		<package name="qemu-spice"/>
 		<package name="evtest"/>
 		<package name="linuxconsoletools"/>
 		<package name="ryzenadj"/>
