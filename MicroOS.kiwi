@@ -25,7 +25,7 @@
 			devicepersistency="by-uuid"
 			btrfs_root_is_snapshot="true"
 			btrfs_root_is_readonly_snapshot="true"
-			kernelcmdline="security=apparmor"
+			kernelcmdline="security=disable"
 			luks="1234"
 			luks_version="luks1"
 			eficsm="false"
@@ -204,7 +204,7 @@
 		<namedCollection name="microos_defaults"/>
 		-->
 		<namedCollection name="microos_hardware"/>
-		<namedCollection name="container_runtime"/>
+		<namedCollection name="container_runtime_podman"/>
 		<namedCollection name="bootloader"/>
 		<package name="btrfsprogs"/>
 		<package name="libz1"/>
